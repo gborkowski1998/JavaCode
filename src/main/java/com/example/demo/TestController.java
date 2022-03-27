@@ -13,15 +13,17 @@ public class TestController {
     @ResponseBody
     public Object params1(
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) Integer age
+            @RequestParam(required = false) Integer age,
+            @RequestParam(required = false) Integer userid
     ) {
         List<UserEntity> users = new ArrayList<>();
-        users.add(new UserEntity(name,  age));
-        users.add(new UserEntity("John",  26));
-        users.add(new UserEntity("Kate",  23));
+        users.add(new UserEntity(name,  age, userid));
+        users.add(new UserEntity("John",  26, 1));
+        users.add(new UserEntity("Kate",  23, 2));
         return users;
 //        return new UserEntity(name,  age);
     }
+
     @RequestMapping("/params/{id}")
     @ResponseBody
     public String params2(
